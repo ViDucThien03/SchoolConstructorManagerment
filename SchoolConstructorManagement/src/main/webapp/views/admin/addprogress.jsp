@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-<c:url var="url" value="/views/admin/"></c:url>
 <meta charset="utf-8">
 <title>DASHMIN - Bootstrap Admin Template</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
-
+<c:url var="url" value="/views/admin/"></c:url>
 <!-- Favicon -->
 <link href="${url }/assets/img/favicon.ico" rel="icon">
 
@@ -45,66 +45,44 @@
 </head>
 
 <body>
-
 	<%@include file="layout/header.jsp"%>
 	<%@include file="layout/sidebar.jsp"%>
+	<div class="container-xxl position-relative bg-white d-flex p-0">
+		<!-- Chart Start -->
+		<div class="container-fluid pt-4 px-4">
+			<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Thêm công việc</h5>
 
-
-
-	<!-- Recent Sales Start -->
-	<div class="container-fluid pt-4 px-4">
-		<div class="row g-4">
-
-			<div class="col-12">
-				<div class="bg-light rounded h-100 p-4">
-					<h6 class="mb-4">DỰ ÁN XÂY DỰNG TRƯỜNG HỌC</h6>
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Mã dự án</th>
-									<th scope="col">Tên dự án</th>
-									<th scope="col">Ngày bắt đầu</th>
-									<th scope="col">Ngày kết thúc</th>
-
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="pj" items="${requestScope.projects }">
-									<tr>
-										<td>${pj.porjectid }</td>
-										<td>${pj.projectname }</td>
-										<td>${pj.startdate }</td>
-										<td>${pj.enddate }</td>
-
-									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+				<!-- Multi Columns Form -->
+				<form class="row g-3" action="/SchoolConstructorManagement/addprogress"
+					method="post">
+					<c:if test="${requestScope.error != null}">
+						<p class="text-danger mt-2">${requestScope.error}</p>
+					</c:if>
+					<div class="col-md-12">
+						<label class="form-label">Mã tiến trình</label> <input type="text"
+							class="form-control" name="progressid">
 					</div>
-				</div>
-			</div>
-			<div class="col-12">
-				<div class="bg-light rounded h-100 p-4">
-					<h4>Mô tả</h4>
+					<div class="col-md-6">
+						<label class="form-label">Ngày cập nhật</label> <input type="date"
+							class="form-control" name="updatedate">
+					</div>
+					<div class="col-12">
+						<label class="form-label">Mô tả</label> <input type="text"
+							class="form-control" name="progressdescription">
+					</div>
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</div>
+				</form>
+				<!-- End Multi Columns Form -->
 
-					<c:forEach var="pj" items="${requestScope.projects }">
-						<pre>${pj.projectdescription}</pre>
-					</c:forEach>
-				</div>
 			</div>
 		</div>
+		</div>
 	</div>
-	<!-- Recent Sales End -->
-	<%@include file="layout/sidebar.jsp"%>
-
-	<!-- Content End -->
-
-
-	<!-- Back to Top -->
-	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
-		class="bi bi-arrow-up"></i></a>
-
+	<%@include file="layout/footer.jsp"%>
 
 	<!-- JavaScript Libraries -->
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -114,9 +92,8 @@
 	<script src="${url }/assets/lib/easing/easing.min.js"></script>
 	<script src="${url }/assets/lib/waypoints/waypoints.min.js"></script>
 	<script src="${url }/assets/lib/owlcarousel/owl.carousel.min.js"></script>
-	<script src="${url }/assets/lib/tempusdominus/js/moment.min.js"></script>
-	<script
-		src="${url }/assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="${url }/lib/tempusdominus/js/moment.min.js"></script>
+	<script src="${url }/lib/tempusdominus/js/moment-timezone.min.js"></script>
 	<script
 		src="${url }/assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 

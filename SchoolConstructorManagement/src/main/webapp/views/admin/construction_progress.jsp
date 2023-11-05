@@ -41,6 +41,7 @@
 
 <!-- Template Stylesheet -->
 <link href="${url }/assets/css/style.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -54,14 +55,15 @@
 					<div class="h-100 bg-light rounded p-4">
 						<div class="col-sm-12 col-xl-12">
 							<div class="bg-light rounded h-100 p-4">
-								<h6 class="mb-4">Table Without Border</h6>
+								<h6 class="mb-4">Tiến trình dự án</h6>
+								<a href="addprogress" class="btn btn-outline-primary m-2">Thêm tiến trình</a>
 								<table class="table table-borderless">
 									<thead>
 										<tr>
 											<th scope="col">Mã tiến trình</th>
 											<th scope="col">Ngày cập nhật</th>
 											<th scope="col">Mô tả</th>
-											
+											<th>Chức năng</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -70,7 +72,8 @@
 												<td>${pr.progressid }</td>
 												<td>${pr.updatedate }</td>
 												<td>${pr.progressdescription }</td>
-												
+												<td><a href="updateCategory?Id=${cate.Id}">Sửa |</a> 
+													<a href="#" onclick="deleteCategory(${cate.id});">Xóa</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
