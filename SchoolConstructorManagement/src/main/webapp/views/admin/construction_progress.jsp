@@ -72,8 +72,10 @@
 												<td>${pr.progressid }</td>
 												<td>${pr.updatedate }</td>
 												<td>${pr.progressdescription }</td>
-												<td><a href="updateCategory?Id=${cate.Id}">Sửa |</a> 
-													<a href="#" onclick="deleteCategory(${cate.id});">Xóa</a></td>
+												<td>
+													<a href="updateprogress?progress_id=${pr.progressid}">Sửa |</a> 
+													<a href="#" onclick="deleteProgress('${pr.progressid}');">Xóa</a>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -111,6 +113,14 @@
 
 	<!-- Template Javascript -->
 	<script src="${url }/assets/js/main.js"></script>
+	<script>
+		function deleteProgress(progressid) {
+			let ans = confirm("Bạn có đồng ý xóa");
+			if(ans){
+				window.location = "deleteprogress?progressid="+progressid;
+			}
+		}
+	</script>
 </body>
 
 </html>

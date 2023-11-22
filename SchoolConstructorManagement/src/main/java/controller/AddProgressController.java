@@ -27,8 +27,9 @@ public class AddProgressController extends HttpServlet{
 		String updatedates = req.getParameter("updatedate");
 		String progressdescription = req.getParameter("progressdescription");
 		String projectid = req.getParameter("projectid");
+		
 		try {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date updatedate = dateFormat.parse(updatedates);
 			ConstructionProgress progress = new ConstructionProgress(progressid, progressdescription, updatedate, projectid);
 			ProgressDAO progressDAO = new ProgressDAO();
