@@ -28,9 +28,9 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Kế hoạch nguồn lực</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Nhân lực</a>
-                            <a href="typography.html" class="dropdown-item">Máy móc</a>
-                            <a href="element.html" class="dropdown-item">Vật tư</a>
+                            <a href="/SchoolConstructorManagement/resource?typeid=RT01" class="dropdown-item" class="bi-bi-circle">Nhân lực</a>
+                            <a href="/SchoolConstructorManagement/resource?typeid=RT02" class="dropdown-item">Máy móc</a>
+                            <a href="/SchoolConstructorManagement/resource?typeid=RT03" class="dropdown-item">Vật tư</a>
                         </div>
                     </div>
                     <a href="/SchoolConstructorManagement/progress" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Tiến trình xây dựng</a>
