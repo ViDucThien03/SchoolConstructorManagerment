@@ -67,9 +67,10 @@
                                             	<td>${rs.estimatedQuantity }</td>
                                             	<td>${rs.currentQuantity }</td>
                                             	<td>${rs.resourceDescription }</td>
+                                            		
                                             	<td>
-                                            		<a href="updateprogress?progress_id=${pr.progressid}">Sửa |</a> 
-													<a href="#" onclick="deleteProgress('${pr.progressid}');">Xóa</a>
+                                            		<a href="updateresource?resourceId=${rs.resourceId}">Sửa |</a> 
+													<a href="#" onclick="deleteResource('${rs.resourceId}','${rs.typeId }');">Xóa</a>
                                             	</td>
                                         	</tr>
                                         </c:forEach>
@@ -79,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>	
             <!-- Table End -->
 
 			<%@include file="layout/footer.jsp"%>
@@ -105,6 +106,15 @@
 
     <!-- Template Javascript -->
     <script src="${url }	assets/js/main.js"></script>
+    <script>
+		function deleteResource(resourceId,typeId) {
+			console.log("Type ID: " + typeId);
+			let ans = confirm("Bạn có đồng ý xóa?");
+			if(ans && typeId){
+				window.location = "deleteresource?resourceId="+resourceId+"&typeid="+typeId;
+			}
+		}
+	</script>
 </body>
 
 </html>

@@ -15,7 +15,7 @@ public class ResourceDAO {
 	public List<Resource> getAll(String typeid) {
 		List<Resource> list = new ArrayList<Resource>();
 		Connection conn = DBConnect.getConnection();
-		String sql = "Select resource_id,resource_name,current_quantity,estimated_quantity,resource_description from resource_detail where type_id=?";
+		String sql = "Select resource_id,resource_name,current_quantity,estimated_quantity,resource_description, type_id from resource_detail where type_id=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, typeid);
@@ -27,7 +27,7 @@ public class ResourceDAO {
 				resource.setEstimatedQuantity(rs.getDouble("estimated_quantity"));
 				resource.setResourceDescription(rs.getNString("resource_description"));
 				resource.setResourceName(rs.getString("resource_name"));
-				resource.setTypeId("type_id");
+				resource.setTypeId(rs.getString("type_id"));
 				list.add(resource);
 			}
 		} catch (SQLException e) {
@@ -36,6 +36,7 @@ public class ResourceDAO {
 		}
 		return list;
 	}
+
 	public Resource getByID(String resourceId) {
 		Resource resource = null;
 		Connection conn = DBConnect.getConnection();
@@ -44,14 +45,15 @@ public class ResourceDAO {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, resourceId);
 			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				resource = new Resource();
 				resource.setResourceId(rs.getString("resource_id"));
 				resource.setCurrentQuantity(rs.getDouble("current_quantity"));
 				resource.setEstimatedQuantity(rs.getDouble("estimated_quantity"));
 				resource.setResourceDescription(rs.getNString("resource_description"));
 				resource.setResourceName(rs.getString("resource_name"));
-				resource.setTypeId("type_id");
+				resource.setTypeId(rs.getString("type_id"));
+				resource.setProjectId(rs.getString("project_id"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,10 +61,11 @@ public class ResourceDAO {
 		}
 		return resource;
 	}
+
 	public boolean insert(Resource resource) {
 		boolean check = false;
 		Connection conn = DBConnect.getConnection();
-		String sql = "insert into resource_detail value(?,?,?,?,?,?,?)";
+		String sql = "insert into resource_detail values(?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, resource.getResourceId());
@@ -70,16 +73,55 @@ public class ResourceDAO {
 			ps.setDouble(3, resource.getCurrentQuantity());
 			ps.setDouble(4, resource.getEstimatedQuantity());
 			ps.setString(5, resource.getResourceDescription());
-			ps.setString(6, resource.getTypeId());
-			ps.setString(7, resource.getProjectId());
+			ps.setString(6, resource.getProjectId());
+			ps.setString(7, resource.getTypeId());
 			int row = ps.executeUpdate();
-			if(row>0) {
+			if (row > 0) {
 				check = true;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return check;	
+		return check;
 	}
+
+	public boolean update(Resource resource) {
+		boolean check = false;
+		Connection conn = DBConnect.getConnection();
+		String sql = "update resource_detail set resource_name=?, current_quantity=?, estimated_quantity=?, resource_description=?,project_id=?, type_id=? where resource_id=?";
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, resource.getResourceName());
+			ps.setDouble(2, resource.getCurrentQuantity());
+			ps.setDouble(3, resource.getEstimatedQuantity());
+			ps.setString(4, resource.getResourceDescription());
+			ps.setString(5, resource.getProjectId());
+			ps.setString(6, resource.getTypeId());
+			ps.setString(7, resource.getResourceId());
+			int row = ps.executeUpdate();
+			if (row > 0) {
+				check = true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return check;
+	}
+
+	public void delete(String resourceId, String typeId) {
+		Connection conn = DBConnect.getConnection();
+		String sql = "DELETE FROM resource_detail WHERE resource_id=? AND type_id=?";
+		try  {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, resourceId);
+			ps.setString(2, typeId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			
+		}
+	}
+
 }
