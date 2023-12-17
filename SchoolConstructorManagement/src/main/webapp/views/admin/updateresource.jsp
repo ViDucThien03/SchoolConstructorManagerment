@@ -65,10 +65,7 @@
                   <label class="form-label">Tên tài nguyên</label>
                   <input type="text" class="form-control" name="resourceName" value="${resource.resourceName }">
                 </div>
-                <div class="col-12">
-                  <label  class="form-label">Số lượng hiện tại</label>
-                  <input type=text class="form-control" name="currentQuantity" value="${resource.currentQuantity }">
-                </div>
+           
                 <div class="col-12">
                   <label class="form-label">Số lượng dự kiến</label>
                   <input type="text" class="form-control" name="estimatedQuantity" value="${resource.estimatedQuantity }">
@@ -77,7 +74,14 @@
                   <label class="form-label">Mô tả</label>
                   <input type="text" class="form-control"  name="resourceDescription" value="${resource.resourceDescription }">
                 </div>
-                
+                <div class="col-12">
+                  <label class="form-label">Giá tài nguyên dự kiến</label>
+                  <input type="text" class="form-control" name=expectedAmount value="${resource.expectedAmount }">
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Loại tài nguyên</label>
+                  <input type="text" class="form-control" name="expectedTotal" value="${resource.expectedTotal }">
+                </div>
                 <div class="col-12">
                   <label class="form-label">Loại tài nguyên</label>
                   <input type="text" class="form-control" name="typeId" value="${resource.typeId }">

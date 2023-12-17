@@ -6,6 +6,7 @@ public class ConstructionProgress {
 	private String progressid;
 	private String progressdescription;
 	private Date updatedate;
+	private String status;
 	private String projectid;
 	public String getProgressid() {
 		return progressid;
@@ -31,14 +32,23 @@ public class ConstructionProgress {
 	public void setProjectid(String projectid) {
 		this.projectid = projectid;
 	}
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public ConstructionProgress() {
 		super();
 	}
-	public ConstructionProgress(String progressid, String progressdescription, Date updatedate, String projectid) {
+	public ConstructionProgress(String progressid, String progressdescription, Date updatedate, String status,
+			String projectid) {
 		super();
 		this.progressid = progressid;
 		this.progressdescription = progressdescription;
 		this.updatedate = updatedate;
+		this.status = status;
 		this.projectid = projectid;
 	}
 }

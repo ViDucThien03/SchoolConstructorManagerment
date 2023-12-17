@@ -27,11 +27,12 @@ public class AddProgressController extends HttpServlet{
 		String updatedates = req.getParameter("updatedate");
 		String progressdescription = req.getParameter("progressdescription");
 		String projectid = req.getParameter("projectid");
+		String status = req.getParameter("status");
 		
 		try {
 			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			Date updatedate = dateFormat.parse(updatedates);
-			ConstructionProgress progress = new ConstructionProgress(progressid, progressdescription, updatedate, projectid);
+			ConstructionProgress progress = new ConstructionProgress(progressid, progressdescription, updatedate, status, projectid);
 			ProgressDAO progressDAO = new ProgressDAO();
 			ConstructionProgress exits = progressDAO.getByID(progressid);
 			if(exits == null) {

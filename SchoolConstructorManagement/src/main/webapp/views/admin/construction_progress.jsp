@@ -63,6 +63,7 @@
 											<th scope="col">Mã tiến trình</th>
 											<th scope="col">Ngày cập nhật</th>
 											<th scope="col">Mô tả</th>
+											<th scope="col">Trạng thái</th>
 											<th>Chức năng</th>
 										</tr>
 									</thead>
@@ -72,8 +73,9 @@
 												<td>${pr.progressid }</td>
 												<td>${pr.updatedate }</td>
 												<td>${pr.progressdescription }</td>
+												<td>${pr.status }</td>
 												<td>
-													<a href="updateprogress?progress_id=${pr.progressid}">Sửa |</a> 
+													<a href="updateprogress?progressid=${pr.progressid}">Sửa |</a> 
 													<a href="#" onclick="deleteProgress('${pr.progressid}');">Xóa</a>
 												</td>
 											</tr>

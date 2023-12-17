@@ -23,6 +23,7 @@ public class ProgressDAO {
 				progress.setProgressdescription(rs.getNString("progress_description"));
 				progress.setUpdatedate(rs.getDate("update_date"));
 				progress.setProjectid(rs.getString("project_id"));
+				progress.setStatus(rs.getNString("status"));
 				listProgress.add(progress);
 			}
 		} catch (SQLException e) {
@@ -44,6 +45,7 @@ public class ProgressDAO {
 				progress.setProgressid(rs.getString("progress_id"));
 				progress.setProgressdescription(rs.getNString("progress_description"));
 				progress.setUpdatedate(rs.getDate("update_date"));
+				progress.setStatus(rs.getNString("status"));
 				progress.setProjectid(rs.getString("project_id"));
 			}
 		} catch (SQLException e) {
@@ -55,13 +57,14 @@ public class ProgressDAO {
 	public boolean insert(ConstructionProgress progress) {
 		boolean check = false;
 		Connection conn = DBConnect.getConnection();
-		String sql = "INSERT INTO construction_progress (progress_id, update_date, progress_description, project_id) VALUES (?,?,?,?)";
+		String sql = "INSERT INTO construction_progress VALUES (?,?,?,?,?)";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, progress.getProgressid());
-			ps.setDate(2, new java.sql.Date(progress.getUpdatedate().getTime()));
-			ps.setString(3, progress.getProgressdescription());
-			ps.setString(4, progress.getProjectid());
+			ps.setString(2, progress.getProgressdescription());
+			ps.setDate(3, new java.sql.Date(progress.getUpdatedate().getTime()));
+			ps.setString(4, progress.getStatus());
+			ps.setString(5, progress.getProjectid());
 			int row = ps.executeUpdate();
 			if(row>0) {
 				check = true;
@@ -75,13 +78,15 @@ public class ProgressDAO {
 	public boolean update(ConstructionProgress progress) {
 		boolean check = false;
 		Connection conn = DBConnect.getConnection();
-		String sql = "update construction_progress set update_date=?, progress_description=?,project_id=? where progress_id=?";
+		String sql = "update construction_progress set update_date=?, progress_description=?,status=?, project_id=? where progress_id=?";
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setDate(1, new java.sql.Date(progress.getUpdatedate().getTime()));
 			ps.setString(2, progress.getProgressdescription());
-			ps.setString(3, progress.getProjectid());
-			ps.setString(4, progress.getProgressid());
+			ps.setString(3, progress.getStatus());
+			ps.setString(4, progress.getProjectid());
+			ps.setString(5, progress.getProgressid());
+			
 			int row = ps.executeUpdate();
 			if(row>0) {
 				check = true;

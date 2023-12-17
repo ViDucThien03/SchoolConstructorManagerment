@@ -72,7 +72,10 @@
 						<label class="form-label">Mô tả</label> <input type="text"
 							class="form-control" name="progressdescription">
 					</div>
-					
+					<div class="col-12">
+						<label class="form-label">Trạng thái</label> <input type="text"
+							class="form-control" name="status">
+					</div>
 					<div class="text-center">
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</div>

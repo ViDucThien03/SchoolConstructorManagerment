@@ -23,18 +23,19 @@ public class AddResourceController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String resourceId = req.getParameter("resourceId");
         String resourceName = req.getParameter("resourceName");
-        String currentQuantitys = req.getParameter("currentQuantity");
+        
         String estimatedQuantitys = req.getParameter("estimatedQuantity");
         String resourceDescription = req.getParameter("resourceDescription");
         String typeid = req.getParameter("typeId");
         String projectId = req.getParameter("projectId");
-
+        String expectedAmounts = req.getParameter("expectedAmount");
+        String expectedTotals = req.getParameter("expectedTotal"); 
         try {
-            if (currentQuantitys != null && estimatedQuantitys != null) {
-                double currentQuantity = Double.parseDouble(currentQuantitys);
+            if ( estimatedQuantitys != null) {
                 double estimatedQuantity = Double.parseDouble(estimatedQuantitys);
-                Resource rs = new Resource(resourceId, resourceName, estimatedQuantity, currentQuantity,
-                        resourceDescription, typeid, projectId);
+                double expectedAmount = Double.parseDouble(expectedAmounts);
+                double expectedTotal = Double.parseDouble(expectedTotals);
+                Resource rs = new Resource(resourceId, resourceName, estimatedQuantity, resourceDescription, typeid, projectId, expectedAmount, expectedTotal);
                 ResourceDAO resourceDAO = new ResourceDAO();
                 Resource exits = resourceDAO.getByID(resourceId);
                 if (exits == null) {

@@ -1,13 +1,18 @@
 package model;
 
+/**
+ * 
+ */
 public class Resource {
 	private String resourceId;
 	private String resourceName;
 	private double estimatedQuantity;
-	private double currentQuantity;
+	
 	private String resourceDescription;
 	private String typeId;
 	private String projectId;
+	private double expectedAmount;
+	private double expectedTotal;
 	public String getResourceId() {
 		return resourceId;
 	}
@@ -26,12 +31,7 @@ public class Resource {
 	public void setEstimatedQuantity(double estimatedQuantity) {
 		this.estimatedQuantity = estimatedQuantity;
 	}
-	public double getCurrentQuantity() {
-		return currentQuantity;
-	}
-	public void setCurrentQuantity(double currentQuantity) {
-		this.currentQuantity = currentQuantity;
-	}
+	
 	public String getResourceDescription() {
 		return resourceDescription;
 	}
@@ -50,19 +50,35 @@ public class Resource {
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
+	
+	public double getExpectedAmount() {
+		return expectedAmount;
+	}
+	public void setExpectedAmount(double expectedAmount) {
+		this.expectedAmount = expectedAmount;
+	}
+	
+	public double getExpectedTotal() {
+		return expectedTotal;
+	}
+	public void setExpectedTotal(double expectedTotal) {
+		this.expectedTotal = expectedTotal;
+	}
 	public Resource() {
 		super();
 	}
-	public Resource(String resourceId, String resourceName, double estimatedQuantity, double currentQuantity,
-			String resourceDescription, String typeId, String projectId) {
+	public Resource(String resourceId, String resourceName, double estimatedQuantity, String resourceDescription,
+			String typeId, String projectId, double expectedAmount, double expectedTotal) {
 		super();
 		this.resourceId = resourceId;
 		this.resourceName = resourceName;
 		this.estimatedQuantity = estimatedQuantity;
-		this.currentQuantity = currentQuantity;
 		this.resourceDescription = resourceDescription;
 		this.typeId = typeId;
 		this.projectId = projectId;
+		this.expectedAmount = expectedAmount;
+		this.expectedTotal = expectedTotal;
 	}
+	
 	
 }

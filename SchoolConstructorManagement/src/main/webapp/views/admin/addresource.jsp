@@ -68,10 +68,6 @@
                   <input type="text" class="form-control" name="resourceName">
                 </div>
                 <div class="col-12">
-                  <label for="inputPassword4" class="form-label">Số lượng hiện tại</label>
-                  <input type=text class="form-control" name="currentQuantity">
-                </div>
-                <div class="col-12">
                   <label for="inputAddress" class="form-label">Số lượng dự kiến</label>
                   <input type="text" class="form-control" name="estimatedQuantity">
                 </div>
@@ -79,7 +75,14 @@
                   <label for="inputAddress" class="form-label">Mô tả</label>
                   <input type="text" class="form-control"  name="resourceDescription">
                 </div>
-                <c:set var="rs" value="requestScop]"></c:set>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Giá tài nguyên dự kiến</label>
+                  <input type="text" class="form-control"  name="expectedAmount">
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">Tổng giá dự kiến</label>
+                  <input type="text" class="form-control"  name="expectedTotal">
+                </div>
                 <div class="col-12">
                   <label for="inputAddress" class="form-label">Loại tài nguyên</label>
                   <input type="text" class="form-control" name="typeId">

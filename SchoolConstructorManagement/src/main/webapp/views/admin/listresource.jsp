@@ -53,7 +53,9 @@
                                             <th scope="col">Mã nguồn lực</th>
                                             <th scope="col">Tên nguồn lực</th>
                                             <th scope="col">Số lượng dự kiến</th>
-                                            <th scope="col">Số lượng hiện tại</th>
+                                            
+                                            <th scope="col">Giá dự kiến tài nguyên</th>
+                                            <th scope="col">Tổng giá dự kiến</th>
                                             <th scope="col">Mô tả</th>
                                             <th scope="col">Chức năng</th>
                                           
@@ -65,9 +67,10 @@
                                             	<th scope="row">${rs.resourceId }</th>
                                             	<td>${rs.resourceName }</td>
                                             	<td>${rs.estimatedQuantity }</td>
-                                            	<td>${rs.currentQuantity }</td>
+                                            	
                                             	<td>${rs.resourceDescription }</td>
-                                            		
+                                            	<td>${rs.expectedAmount }</td>
+                                            	<td>${rs.expectedTotal }</td>
                                             	<td>
                                             		<a href="updateresource?resourceId=${rs.resourceId}">Sửa |</a> 
 													<a href="#" onclick="deleteResource('${rs.resourceId}','${rs.typeId }');">Xóa</a>

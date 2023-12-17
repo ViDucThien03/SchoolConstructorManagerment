@@ -30,17 +30,20 @@ public class UpdateResourceController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		String resourceId = req.getParameter("resourceId");
         String resourceName = req.getParameter("resourceName");
-        String currentQuantitys = req.getParameter("currentQuantity");
+        
         String estimatedQuantitys = req.getParameter("estimatedQuantity");
         String resourceDescription = req.getParameter("resourceDescription");
         String typeId = req.getParameter("typeId");
         String projectId = req.getParameter("projectId");
+        String expectedAmounts = req.getParameter("expectedAmount");
+        String expectedTotals = req.getParameter("expectedTotal"); 
         try {
-            if (currentQuantitys != null && estimatedQuantitys != null) {
-                double currentQuantity = Double.parseDouble(currentQuantitys);
+            if (estimatedQuantitys != null) {
+                
                 double estimatedQuantity = Double.parseDouble(estimatedQuantitys);
-                Resource rs = new Resource(resourceId, resourceName, estimatedQuantity, currentQuantity,
-                        resourceDescription, typeId, projectId);
+                double expectedAmount = Double.parseDouble(expectedAmounts);
+                double expectedTotal = Double.parseDouble(expectedTotals);
+                Resource rs = new Resource(resourceId, resourceName, estimatedQuantity, resourceDescription, typeId, projectId, expectedAmount, expectedTotal);
                 ResourceDAO resourceDAO = new ResourceDAO();
                 resourceDAO.update(rs);
                 resp.sendRedirect("/SchoolConstructorManagement/resource?typeid="+typeId);
